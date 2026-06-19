@@ -1,0 +1,525 @@
+/* ─────────────────────────────────────────────────────────────────
+   GUINNESS NIGERIA — Global Stylesheet
+   Design System: "Dark Matter"
+   ──────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS CUSTOM PROPERTIES — DARK MODE (default) ───────────────── */
+:root {
+  --g-black:      #0A0A0A;
+  --g-void:       #050505;
+  --g-gold:       #C9963A;
+  --g-gold-hi:    #E8B84B;
+  --g-gold-foam:  #F5D98A;
+  --g-gold-lo:    #8A6420;
+  --g-cream:      #F2EDD7;
+  --g-cream-hi:   #FAF7EE;
+  --g-red:        #C0392B;
+  --g-iron:       #2E2E2E;
+  --g-muted:      #6B6B6B;
+
+  /* Semantic tokens — dark */
+  --color-bg:        #050505;
+  --color-surface:   #111111;
+  --color-surface-2: #1A1A1A;
+  --color-border:    rgba(255,255,255,0.08);
+  --color-text:      #F2EDD7;
+  --color-text-muted:#6B6B6B;
+  --color-heading:   #FAF7EE;
+  --color-accent:    #C9963A;
+  --color-accent-hi: #E8B84B;
+
+  /* Glow radii */
+  --glow-sm:  0 0 12px rgba(201,150,58,0.3);
+  --glow-md:  0 0 30px rgba(201,150,58,0.4);
+  --glow-lg:  0 0 60px rgba(201,150,58,0.35);
+  --glow-xl:  0 0 100px rgba(201,150,58,0.25);
+
+  /* Transition presets */
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo:   cubic-bezier(0.19, 1, 0.22, 1);
+
+  /* Section padding */
+  --section-py: clamp(5rem, 10vw, 9rem);
+  --section-px: clamp(1.5rem, 6vw, 6rem);
+}
+
+/* ─── LIGHT MODE OVERRIDES ───────────────────────────────────────── */
+html.light, html:not(.dark) body.light {
+  --color-bg:        #FAF7EE;
+  --color-surface:   #FFFFFF;
+  --color-surface-2: #F0EBE0;
+  --color-border:    rgba(0,0,0,0.1);
+  --color-text:      #2A1F0A;
+  --color-text-muted:#7A6B52;
+  --color-heading:   #1A1000;
+  --color-accent:    #A07020;
+  --color-accent-hi: #C9963A;
+  --g-void:          #FAF7EE;
+  --g-black:         #F0EBE0;
+  --g-iron:          #D4C9B0;
+  --g-muted:         #7A6B52;
+  --g-cream:         #2A1F0A;
+  --g-cream-hi:      #1A1000;
+}
+
+body.light {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Light mode card */
+body.light .card-dark {
+  background: #FFFFFF !important;
+  border-color: rgba(160,112,32,0.2) !important;
+}
+body.light .card-dark:hover {
+  border-color: rgba(160,112,32,0.45) !important;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.12), 0 0 24px rgba(160,112,32,0.12) !important;
+}
+
+/* Light mode buttons */
+body.light .btn-ghost {
+  border-color: rgba(160,112,32,0.5) !important;
+  color: #A07020 !important;
+}
+body.light .btn-ghost:hover {
+  background: rgba(160,112,32,0.08) !important;
+}
+
+/* ─── BASE RESET ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--g-void);
+  color: var(--g-cream);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ─── SCROLLBAR STYLING ──────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--g-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--g-gold-lo);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--g-gold);
+}
+
+/* ─── SELECTION COLOUR ──────────────────────────────────────────── */
+::selection {
+  background: rgba(201,150,58,0.35);
+  color: var(--g-cream-hi);
+}
+
+/* ─── FOCUS RING ──────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--g-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─── TYPOGRAPHY BASE ────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  color: var(--g-cream-hi);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--g-cream);
+  opacity: 0.8;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+}
+
+/* ─── UTILITY CLASSES ────────────────────────────────────────────── */
+@layer utilities {
+
+  /* Gold text gradient */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #8A6420 0%, #C9963A 40%, #E8B84B 60%, #F5D98A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Shimmer text animation */
+  .text-shimmer {
+    background: linear-gradient(
+      90deg,
+      #8A6420 0%,
+      #C9963A 20%,
+      #F5D98A 40%,
+      #E8B84B 50%,
+      #F5D98A 60%,
+      #C9963A 80%,
+      #8A6420 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  @keyframes shimmer {
+    0%   { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+
+  /* Gold glow on text */
+  .text-glow {
+    text-shadow:
+      0 0 20px rgba(201,150,58,0.6),
+      0 0 40px rgba(201,150,58,0.3),
+      0 0 80px rgba(201,150,58,0.15);
+  }
+
+  /* Gold border top accent */
+  .border-gold-top {
+    border-top: 1px solid rgba(201,150,58,0.3);
+  }
+
+  /* Gold border bottom accent */
+  .border-gold-bottom {
+    border-bottom: 1px solid rgba(201,150,58,0.3);
+  }
+
+  /* Section container */
+  .section-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: var(--section-px);
+    padding-right: var(--section-px);
+  }
+
+  /* Gold pill label */
+  .pill-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    padding: 0.35em 1em;
+    border-radius: 100px;
+    border: 1px solid rgba(201,150,58,0.4);
+    background: rgba(201,150,58,0.08);
+    color: var(--g-gold-hi);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* Reduced motion — respect OS preference */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Skip-to-content link — visually hidden until focused */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 1rem;
+    z-index: 200;
+    background: #C9963A;
+    color: #050505;
+    padding: 0.75rem 1.5rem;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+  .skip-link:focus {
+    left: 1rem;
+  }
+
+  /* Screen-reader only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+/* ─── COMPONENT CLASSES ──────────────────────────────────────────── */
+@layer components {
+
+  /* Primary CTA button */
+  .btn-primary {
+    @apply relative inline-flex items-center gap-3 px-8 py-4 rounded-full overflow-hidden;
+    background: linear-gradient(135deg, #8A6420, #C9963A, #E8B84B);
+    color: #050505;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s var(--ease-spring);
+    box-shadow: 0 0 0 0 rgba(201,150,58,0);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--glow-md);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0) scale(0.99);
+  }
+
+  /* Ghost / outline button */
+  .btn-ghost {
+    @apply relative inline-flex items-center gap-3 px-8 py-4 rounded-full;
+    border: 1px solid rgba(201,150,58,0.5);
+    color: var(--g-gold-hi);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s var(--ease-spring);
+    background: transparent;
+  }
+
+  .btn-ghost:hover {
+    border-color: rgba(201,150,58,0.9);
+    background: rgba(201,150,58,0.08);
+    transform: translateY(-2px);
+    box-shadow: var(--glow-sm);
+  }
+
+  /* Section overline label */
+  .overline {
+    @apply pill-gold;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Horizontal gold divider */
+  .gold-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--g-gold), var(--g-gold-hi));
+    border-radius: 1px;
+  }
+
+  /* Card — dark elevated surface */
+  .card-dark {
+    background: #111111;
+    border: 1px solid rgba(201,150,58,0.12);
+    border-radius: 16px;
+    transition: all 0.4s var(--ease-spring);
+  }
+
+  .card-dark:hover {
+    border-color: rgba(201,150,58,0.35);
+    box-shadow: 0 12px 48px rgba(0,0,0,0.8), var(--glow-sm);
+    transform: translateY(-4px);
+  }
+
+  /* Noise texture overlay for depth */
+  .noise-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+}
+
+/* ─── LIGHT MODE SECTION OVERRIDES ──────────────────────────────── */
+body.light section,
+body.light .section-container {
+  color: var(--color-text);
+}
+
+/* Light mode headings in sections */
+body.light h1, body.light h2, body.light h3, body.light h4 {
+  color: var(--color-heading) !important;
+}
+
+/* Light mode text */
+body.light p {
+  color: var(--color-text) !important;
+  opacity: 0.85;
+}
+
+/* Light mode section backgrounds */
+body.light #products,
+body.light #story,
+body.light #news,
+body.light #sustainability,
+body.light #careers {
+  background: var(--color-bg) !important;
+}
+
+body.light section[id] {
+  background: var(--color-bg) !important;
+}
+
+/* Light mode borders */
+body.light .border-g-iron,
+body.light [style*="rgba(255,255,255,0.06)"],
+body.light [style*="rgba(255,255,255,0.07)"],
+body.light [style*="rgba(255,255,255,0.08)"] {
+  border-color: rgba(0,0,0,0.1) !important;
+}
+
+/* Light mode amber/gold stays gold */
+body.light .pill-gold,
+body.light .text-g-gold,
+body.light .text-g-goldHi {
+  color: #A07020 !important;
+}
+
+/* Light mode nav text */
+body.light nav a {
+  color: var(--color-text) !important;
+}
+
+/* Light mode footer */
+body.light footer {
+  background: #F0EBE0 !important;
+  border-top-color: rgba(160,112,32,0.2) !important;
+}
+
+/* Smooth colour transitions for theme switch */
+*, section, div, header, footer, main, nav {
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+}
+
+/* But NOT layout-affecting properties */
+* {
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* ─── LIGHT MODE CONTRAST FIXES ─────────────────────────────────── */
+
+/* Force all muted text to dark in light mode */
+body.light [style*="rgba(242,237,215,0.6)"],
+body.light [style*="rgba(242,237,215,0.55)"],
+body.light [style*="rgba(242,237,215,0.65)"],
+body.light [style*="rgba(242,237,215,0.5)"],
+body.light [style*="rgba(242,237,215,0.4)"],
+body.light [style*="rgba(242,237,215,0.45)"],
+body.light [style*="rgba(242,237,215,0.7)"],
+body.light [style*="rgba(242,237,215,0.75)"],
+body.light [style*="rgba(242,237,215,0.8)"] {
+  color: rgba(40, 28, 8, 0.7) !important;
+}
+
+body.light [style*="color: '#FAF7EE'"],
+body.light [style*="color:'#FAF7EE'"],
+body.light [style*='color:"#FAF7EE"'] {
+  color: #1A1000 !important;
+}
+
+/* Product / card headings in light mode */
+body.light [style*="color: '#FAF7EE'"] {
+  color: var(--color-heading) !important;
+}
+
+/* All section containers in light mode get proper bg */
+body.light .section-container > * {
+  color: var(--color-text);
+}
+
+/* Pill gold in light mode */
+body.light .pill-gold {
+  background: rgba(160,112,32,0.08) !important;
+  border-color: rgba(160,112,32,0.3) !important;
+  color: #8A5E10 !important;
+}
+
+/* Page bg utility */
+body.light [style*="background: '#050505'"],
+body.light [style*="background:'#050505'"],
+body.light [style*="background: 'var(--color-bg,#050505)'"] {
+  background: var(--color-bg) !important;
+}
+
+/* Stats, counters in light mode */
+body.light .tabular-nums {
+  color: var(--color-heading) !important;
+}
+
+/* Gold line stays gold */
+body.light .gold-divider,
+body.light [class*="bg-g-gold"],
+body.light [class*="bg-gradient"][class*="gold"] {
+  opacity: 1;
+}
+
+/* Light mode card borders more visible */
+body.light .card-dark {
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08) !important;
+}
+
+/* Ensure sections with solid dark backgrounds keep dark style in light mode */
+body.light .chapter-dark-card,
+body.light [style*="background: 'linear-gradient(145deg, #0A0A0A"],
+body.light [style*="background: linear-gradient(145deg, #0A0A0A"] {
+  /* These intentionally stay dark for brand storytelling */
+  background: #1A1410 !important;
+}
+
+/* Muted text utility */
+body.light .text-g-muted {
+  color: rgba(40,28,8,0.55) !important;
+}
+
+/* Input fields in light mode */
+body.light input,
+body.light textarea,
+body.light select {
+  background: rgba(255,255,255,0.8) !important;
+  color: #1A1000 !important;
+  border-color: rgba(160,112,32,0.3) !important;
+}
+
+body.light input::placeholder,
+body.light textarea::placeholder {
+  color: rgba(40,28,8,0.4) !important;
+}
