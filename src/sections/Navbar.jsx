@@ -24,48 +24,8 @@ import { useScrollPosition } from '../hooks'
 function Logo() {
   return (
     <Link to="/" data-cursor-hover className="flex items-center gap-3 group">
-      <motion.div
-        className="w-10 h-10 rounded-full flex items-center justify-center relative"
-        style={{ border: '1px solid rgba(201,150,58,0.5)' }}
-        whileHover={{ scale: 1.08 }}
-        transition={{ duration: 0.3 }}
-      >
-        <motion.div
-          className="absolute inset-0 rounded-full"
-          style={{ border: '1px solid rgba(201,150,58,0.3)' }}
-          animate={{ scale: [1, 1.25, 1], opacity: [0.6, 0, 0.6] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <span
-          style={{
-            fontFamily: 'Playfair Display, serif',
-            fontWeight: 800,
-            fontSize: '1.1rem',
-            color: '#C9963A',
-          }}
-        >
-          G
-        </span>
-      </motion.div>
-      <div className="hidden sm:flex flex-col leading-none">
-        <span
-          style={{
-            fontFamily: 'Playfair Display, serif',
-            fontWeight: 700,
-            fontSize: '0.95rem',
-            color: '#FAF7EE',
-            letterSpacing: '0.02em',
-          }}
-        >
-          Guinness
-        </span>
-        <span
-          className="text-label-xs uppercase tracking-widest"
-          style={{ color: 'rgba(201,150,58,0.6)', fontSize: '0.6rem' }}
-        >
-          Nigeria
-        </span>
-      </div>
+      <img src="/favicon.ico" alt="Guiness logo" 
+      className='w-3/12'/>
     </Link>
   )
 }

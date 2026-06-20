@@ -669,9 +669,10 @@ export default function Hero() {
                   src="/images/products/malta-can.png"
                   alt="Malta Guinness"
                   style={{
-                    height: 340,
+                    height: 400,
                     width: 'auto',
                     filter: 'drop-shadow(0 24px 56px rgba(212,160,32,0.55)) drop-shadow(0 8px 20px rgba(0,0,0,0.5))',
+                    opacity: 0.7
                   }}
                 />
               </motion.div>

@@ -215,7 +215,7 @@ const CHAPTERS = [
     accent: '#E8B84B',
     gradientFrom: '#0D0800',
     gradientTo: '#1A0A00',
-    productImg: '/images/products/fes-can.png',
+    productImg: '/images/products/fes-can-new.png',
     productAlt: 'Guinness FES can',
   },
 ]
@@ -287,7 +287,7 @@ function ChapterCard({ chapter, index }) {
       />
 
       {/* Text content */}
-      <div className="relative z-10 p-10 md:p-12 flex flex-col justify-between flex-1" style={{ maxWidth: '55%' }}>
+      <div className="relative z-10 p-10 md:p-12 flex flex-col justify-between flex-1" style={{ maxWidth: '70%' }}>
         <div>
           <motion.div
             className="text-label-xs uppercase tracking-widest mb-5"
@@ -537,7 +537,7 @@ export default function BrandStory() {
           </motion.div>
 
           {/* ── 2. Chapter cards ── */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
             {CHAPTERS.map((ch, i) => (
               <ChapterCard key={ch.id} chapter={ch} index={i} />
             ))}
