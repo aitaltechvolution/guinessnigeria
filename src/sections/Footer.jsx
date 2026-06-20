@@ -306,13 +306,10 @@ export default function Footer() {
           viewport={viewportTrigger}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="flex items-center gap-4">
-            <div
-              className="w-9 h-9 rounded-full flex items-center justify-center"
-              style={{ border: '1px solid rgba(201,150,58,0.4)' }}
-            >
-              <span style={{ fontFamily: 'Playfair Display, serif', fontWeight: 800, color: '#C9963A', fontSize: '0.9rem' }}>G</span>
-            </div>
+          <div className="flex justify-center items-center gap-4">
+              <img src="/favicon.ico" alt="Guiness logo" 
+                className='w-1/12'/>
+
             <div className="leading-tight">
               <p style={{ color: 'rgba(242,237,215,0.5)', fontSize: '0.8rem' }}>
                 © 2026 {BRAND.name}. All rights reserved.
