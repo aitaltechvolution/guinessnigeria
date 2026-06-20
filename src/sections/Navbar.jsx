@@ -98,7 +98,7 @@ function MobileMenu({ open, onClose }) {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-40 flex flex-col"
+          className="fixed mt-16z inset-0 z-40 flex flex-col"
           style={{ background: '#050505' }}
           initial={{ clipPath: 'circle(0% at 95% 5%)' }}
           animate={{ clipPath: 'circle(150% at 95% 5%)' }}
